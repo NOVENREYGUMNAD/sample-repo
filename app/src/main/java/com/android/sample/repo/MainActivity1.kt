@@ -3,12 +3,12 @@ package com.android.sample.repo
 // Name of students and their grades(average)
 fun main() {
     val studentGrades = mapOf(
-        "John" to 85,
-        "Jane" to 89,
-        "Jim" to 80,
-        "Jill" to 90,
-        "Jack" to 87,
-        "Joe" to 82
+        "rey" to 85,
+        "andrew" to 89,
+        "gee" to 80,
+        "riz" to 90,
+        "joe" to 87,
+        "ley" to 82
     )
 
     val daysOfWeek = listOf("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
