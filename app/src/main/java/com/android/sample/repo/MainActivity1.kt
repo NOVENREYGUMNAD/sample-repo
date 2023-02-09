@@ -1,39 +1,56 @@
 package com.android.sample.repo
 
 // Name of students and their grades(average)
-fun main() {
-    val studentGrades = mapOf(
-        "rey" to 85,
-        "andrew" to 89,
-        "gee" to 80,
-        "riz" to 90,
-        "joe" to 87,
-        "ley" to 82
-    )
+fun main(args: Array<String>) {
+    val welcome: String = "MD3P STUDENTS RATING"
+    println(welcome)
 
-    val daysOfWeek = listOf("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
+    val studentDirectory = mutableMapOf<String, Student>()
+    val studentList = arrayOf("Andrew Bustos", "Faith Mariano", "Felix Navarro", "Gee Quero", "Jaramillo Hanz",
+        "Jeffrey Laroya", "Jeje Elenzano", "Joe Mari Ubay", "John Chris Macaraig Bolanio", "Jun Zon", "KI NG KL Lopez",
+        "Kram Krad", "Lander Pelagio", "Ley De", "Marie Fe Dela Peña", "Noven Rey Gumnad", "Paolo Luzares",
+        "Raii Ichinose", "Riz Caser", "Seong Phl", "Vanchan Navidad", "Vic Ama", "Xandrei Xhou", "Yer Bravo Toilas")
 
-    print("Enter a student name: ")
-    val name = readLine()!!
+    for (studentName in studentList) {
+        val student = Student(studentName)
+        studentDirectory[student.name] = student
+    }
 
-    val grade = studentGrades[name]
-    if (grade != null) {
-        println("$name has a grade of $grade")
-
-        if (grade >= 80) {
-            println("$name passed the class.")
-        } else {
-            println("$name did not pass the class.")
+    while (true) {
+        println("Please enter student name: ")
+        val studentName = readLine() ?: break
+        val student = studentDirectory[studentName]
+        if (student == null) {
+            println("Student not found.")
+            continue
         }
 
-        print("Enter a day of the week: ")
-        val day = readLine()!!
-        if (day in daysOfWeek) {
-            println("Today is $day.")
+        println("Enter student rating (pass/fail): ")
+        val rating = readLine()
+        if (rating == "pass") {
+            student.pass()
+        } else if (rating == "fail") {
+            student.fail()
         } else {
-            println("Invalid day entered.")
+            println("Invalid rating.")
+            continue
         }
-    } else {
-        println("$name is not in the list of students")
+        println("Student $studentName rating updated to $rating.")
+        println("Current student ratings:")
+        for ((name, student) in studentDirectory) {
+            println("$name rating: ${if (student.passed) "pass" else "fail"}")
+        }
+    }
+}
+
+class Student(val name: String) {
+    var passed: Boolean = false
+
+    fun pass() {
+        passed = true
+    }
+
+    fun fail() {
+        passed = false
     }
 }
