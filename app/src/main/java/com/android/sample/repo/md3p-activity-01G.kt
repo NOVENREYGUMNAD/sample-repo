@@ -1,20 +1,23 @@
 package com.android.sample.repo
 
 fun main() {
-    println("Enter a string:")
-    val input = readLine()!!
+
+    println("Please enter your words to test if it's a Palindrome or Not:")
+
+    val input = readLine()!!.lowercase()
 
     var isPalindrome = true
     for (i in 0 until input.length / 2) {
-        if (input[i] != input[input.length - i - 1]) {
+        if (input[i] != input[input.length - i - 1].lowercaseChar()) {
             isPalindrome = false
             break
         }
     }
 
     if (isPalindrome) {
-        println("Palindrome")
+        println("You entered a Palindrome!")
     } else {
-        println("Not a palindrome")
+        println("Oh no this is not a palindrome!")
     }
+
 }
