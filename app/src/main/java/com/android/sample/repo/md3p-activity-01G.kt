@@ -2,7 +2,7 @@ package com.android.sample.repo
 
 fun main() {
 
-    println("Please enter your words to test if it's a Palindrome or Not:")
+    println("Please enter a string to test if it's a Palindrome or Not:")
 
     val input = readLine()!!.lowercase()
 
@@ -17,7 +17,7 @@ fun main() {
     if (isPalindrome) {
         println("You entered a Palindrome!")
     } else {
-        println("Oh no this is not a palindrome!")
+        println("Oh, no! This is not a palindrome!")
     }
 
 }
